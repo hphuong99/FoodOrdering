@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.wifi.ScanResult;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.foodordering.adapter.PopularAdapter;
+import com.example.foodordering.adapter.RecommendedAdapter;
 import com.example.foodordering.model.FoodData;
 import com.example.foodordering.model.Popular;
+import com.example.foodordering.model.Recommended;
 import com.example.foodordering.retrofit.ApiInterface;
 import com.example.foodordering.retrofit.RetrofitClient;
 
@@ -22,8 +25,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     ApiInterface apiInterface;
 
-    RecyclerView popularRecyclerView;
+    RecyclerView popularRecyclerView, recommendedRecyclerView;
+
     PopularAdapter popularAdapter;
+    RecommendedAdapter recommendedAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
                 List<FoodData> foodDataList = response.body();
                 getPopularData(foodDataList.get(0).getPopular());
+                getRecommendedData(foodDataList.get(0).getRecommended());
+
             }
 
             @Override
@@ -53,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         popularRecyclerView.setLayoutManager(layoutManager);
         popularRecyclerView.setAdapter(popularAdapter);
+
+    }
+    private void getRecommendedData(List<Recommended> recommendedList) {
+        recommendedRecyclerView = findViewById(R.id.recommended_recyccler);
+        recommendedAdapter = new RecommendedAdapter(this, recommendedList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recommendedRecyclerView.setLayoutManager(layoutManager);
+        recommendedRecyclerView.setAdapter(recommendedAdapter);
 
     }
 

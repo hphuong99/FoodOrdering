@@ -36,27 +36,44 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@id/tv1"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_bg"
         android:drawableLeft="@drawable/icon_timkiem"
         android:hint="Tìm kiếm...."
-        android:background="@drawable/search_bg"
-        android:layout_marginTop="20dp"
         android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTextPersonName"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:text="Được đặt nhiều trong tuần"
-        android:layout_below="@id/editTextTextPersonName"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="400dp"
         android:id="@+id/popular_recycler"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/tv2"/>
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popular_recycler"
+        android:layout_marginTop="20dp"
+        android:text="Được đặt nhiều trong tuần"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommended_recyccler"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
